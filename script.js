@@ -48,9 +48,6 @@ function playRound(playerSelection, computerSelection) {
           break;
         case "scissors":
           return "Rock beats scissors. You win!";
-          break;
-        default:
-          return "default"
       }
     } else if (playerSelection === "paper") {
       switch (computerSelection) {
@@ -59,9 +56,6 @@ function playRound(playerSelection, computerSelection) {
           break;
         case "scissors":
           return "Scissors beat paper. You loose."
-          break;
-        default:
-          return "default"
       }
     } else if (playerSelection === "scissors") {
       switch (computerSelection) {
