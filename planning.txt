@@ -3,7 +3,8 @@ collect input from player and store in variable playerSelection
 convert playerSelection to lowerCase
 validate playerSelection is a valid choice
   display error message if playerSelection is not valid
-computerSelection
+function computerPlay
+  initialize variable computerSelection
   rock paper or scissors
 function playRound to compare playerSelection to computerSelection
 declare winner of round in console
