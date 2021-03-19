@@ -8,3 +8,16 @@ function computerPlay
   rock paper or scissors
 function playRound to compare playerSelection to computerSelection
 declare winner of round in console
+
+
+
+
+TODOs:
+* Format console.log entries for the result
+* Simplify playRound logic
+  * separate function for determining the winner vs showing the winning rule?
+* Validate prompt entries
+  * add method to exit game before 5 rounds have been played
+* Show final results at the end of the game (5 rounds)
+  * console.table ?
+* Show running score at the end of each round?
