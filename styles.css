@@ -1,0 +1,9 @@
+/* Style sheet for Rock Paper Scissors project */
+
+.announce{
+  position: relative;
+  top: 75px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
