@@ -4,7 +4,7 @@
   let computerSelection = computerPlay();
   console.log("You chose " + playerSelection);
   console.log("The computer chose " + computerSelection);
-  console.log(playRound(playerSelection, computerSelection));
+  console.log(showWinningRule(playerSelection, computerSelection));
 
 
 
@@ -66,5 +66,22 @@ function playRound(playerSelection, computerSelection) {
           return "Scissors beat paper. You win!"
       }
     }
+}
+
+function showWinningRule(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    return "They are the same.";
+  } else if ((playerSelection === "rock" || computerSelection === "rock") &&
+        (playerSelection === "paper" || computerSelection === "paper")) {
+      return "Paper beats rock.";
+
+  } else if ((playerSelection === "rock" || computerSelection === "rock") &&
+        (playerSelection === "scissors" || computerSelection === "scissors")) {
+      return "Rock beats scissors.";
+
+  } else if ((playerSelection === "paper" || computerSelection === "paper") &&
+        (playerSelection === "scissors" || computerSelection === "scissors")) {
+      return "Scissors beat paper."
+  }
 }
 
