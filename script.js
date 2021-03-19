@@ -29,30 +29,27 @@ function game() {
     } else if (winner === "player") {
       playerScore += 1;
       console.log("%cYou win!", "color: green;");
+    } else if (winner === "tie") {
+      console.log("%cIt's a tie", "color: blue;")
     }
 
+    // report running score
     console.log("Round " + i + " score");
     console.log("Your score: " + playerScore + " Computer score: " + computerScore);
     console.log("---------------------")
+    
+    // report final resutls
     if (i === 5) {
       if (playerScore > computerScore) {
-        console.log("%cYOU WON THE MATCH!!!", "color: green;");        
+        console.log("%cYOU WON THE MATCH!!!", "color: green; font-weight: bold;");        
       } else if (playerScore < computerScore) {
-          console.log("You lost the match.");          
+          console.log("%cYou lost the match.", "color: red; font-weight: bold;");          
+      } else if (playerScore == computerScore) {
+      console.log("%cThe match was a tie.", "color: blue; font-weight: bold;")
       }
     }
-
   } // end for for loop
 }
-  
-
-
-
-
-
-
-
-
 
 function computerPlay() {
   let computerSelection = getRandomIntInclusive(1, 3);
@@ -84,7 +81,7 @@ function getPlayerInput() {
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
-    return "It's a tie!";
+    return "tie";
   } else if (playerSelection === "rock") {
       switch (computerSelection) {
         case "paper":
@@ -109,7 +106,7 @@ function playRound(playerSelection, computerSelection) {
           return "computer";
           break;
         case "paper":
-          return "player!"
+          return "player"
       }
     }
 }
