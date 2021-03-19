@@ -1,10 +1,54 @@
 
 
-  let playerSelection = getPlayerInput();
-  let computerSelection = computerPlay();
-  console.log("You chose " + playerSelection);
-  console.log("The computer chose " + computerSelection);
-  console.log(showWinningRule(playerSelection, computerSelection));
+let winner;
+let computerScore = 0;
+let playerScore = 0;
+
+game();
+
+
+function game() {
+  
+  for (i = 1; i <=5; i++) {
+
+    // Make computer and player choices
+    let playerSelection = getPlayerInput();
+    let computerSelection = computerPlay();
+    console.log("%cRound #" + i, "font-weight: bold;")
+    console.log("You chose " + playerSelection);
+    console.log("The computer chose " + computerSelection);
+
+    // Play the round 
+    console.log(showWinningRule(playerSelection, computerSelection));
+    winner = playRound(playerSelection, computerSelection);
+    
+    //  Show winner and track scores
+    if (winner === "computer") {
+      computerScore += 1;
+      console.log("%cYou loose.", "color: red;");
+    } else if (winner === "player") {
+      playerScore += 1;
+      console.log("%cYou win!", "color: green;");
+    }
+
+    console.log("Round " + i + " score");
+    console.log("Your score: " + playerScore + " Computer score: " + computerScore);
+    console.log("---------------------")
+    if (i === 5) {
+      if (playerScore > computerScore) {
+        console.log("%cYOU WON THE MATCH!!!", "color: green;");        
+      } else if (playerScore < computerScore) {
+          console.log("You lost the match.");          
+      }
+    }
+
+  } // end for for loop
+}
+  
+
+
+
+
 
 
 
@@ -44,26 +88,28 @@ function playRound(playerSelection, computerSelection) {
   } else if (playerSelection === "rock") {
       switch (computerSelection) {
         case "paper":
-          return "Paper beats rock. You loose";
+          return "computer";
           break;
         case "scissors":
-          return "Rock beats scissors. You win!";
+          return "player";
       }
+
     } else if (playerSelection === "paper") {
       switch (computerSelection) {
         case "rock":
-          return "Paper beats rock. You win!";
+          return "player";
           break;
         case "scissors":
-          return "Scissors beat paper. You loose."
+          return "computer"
       }
+
     } else if (playerSelection === "scissors") {
       switch (computerSelection) {
         case "rock":
-          return "Rock beat scissors. You loose";
+          return "computer";
           break;
         case "paper":
-          return "Scissors beat paper. You win!"
+          return "player!"
       }
     }
 }
@@ -84,4 +130,5 @@ function showWinningRule(playerSelection, computerSelection) {
       return "Scissors beat paper."
   }
 }
+
 
