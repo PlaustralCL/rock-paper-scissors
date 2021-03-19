@@ -1,11 +1,9 @@
 
 
-  let playerSelection = "scissors";
+  let playerSelection = getPlayerInput();
   let computerSelection = computerPlay();
-
   console.log("You chose " + playerSelection);
   console.log("The computer chose " + computerSelection);
-
   console.log(playRound(playerSelection, computerSelection));
 
 
@@ -36,8 +34,8 @@ function getRandomIntInclusive(min, max) {
 }
 
 function getPlayerInput() {
-  let selection = prompt("Choose 'Rock', 'Paper' or 'Scissors'");
-  return selection.toLowerCase;
+  let playerSelection = prompt("Choose 'Rock', 'Paper' or 'Scissors'");
+  return playerSelection.toLowerCase();
 }
 
 function playRound(playerSelection, computerSelection) {
