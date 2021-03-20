@@ -8,23 +8,24 @@ function game() {
   let computerScore = 0;
   let playerScore = 0;
   
-  
   for (i = 1; i <=5; i++) { // play 5 rounds
 
-    // Make computer and player choices
+    // Get player choice
     let playerSelection = getPlayerInput();
     if (validateInput(playerSelection) == "end") {
       break;
     }
     
-
+    // Get computer choice
     let computerSelection = computerPlay();
+
+    // Print initial information
     console.log("%cRound #" + i, "font-weight: bold;")
     console.log("You chose " + playerSelection);
     console.log("The computer chose " + computerSelection);
-
-    // Play the round 
     console.log(showWinningRule(playerSelection, computerSelection));
+    
+    // Play the round 
     winner = playRound(playerSelection, computerSelection);
     
     //  Show winner and track scores
@@ -67,9 +68,6 @@ function computerPlay() {
       break;
     case 3:
       computerSelection = "scissors";
-      break;
-    default:
-      computerSelection = "default";
   }
   return computerSelection;
 }
@@ -93,6 +91,7 @@ function validateInput(playerSelection) {
 }
 
 function playRound(playerSelection, computerSelection) {
+  // determines the winner of the round and returns the name of the winner
   if (playerSelection === computerSelection) {
     return "tie";
   } else if (playerSelection === "rock") {
@@ -129,16 +128,14 @@ function showWinningRule(playerSelection, computerSelection) {
     return "They are the same.";
   } else if ((playerSelection === "rock" || computerSelection === "rock") &&
         (playerSelection === "paper" || computerSelection === "paper")) {
-      return "Paper beats rock.";
+      return "Paper covers rock.";
 
   } else if ((playerSelection === "rock" || computerSelection === "rock") &&
         (playerSelection === "scissors" || computerSelection === "scissors")) {
-      return "Rock beats scissors.";
+      return "Rock smashes scissors.";
 
   } else if ((playerSelection === "paper" || computerSelection === "paper") &&
         (playerSelection === "scissors" || computerSelection === "scissors")) {
-      return "Scissors beat paper."
+      return "Scissors cut paper."
   }
 }
-
-
