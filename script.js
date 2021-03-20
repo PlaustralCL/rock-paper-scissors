@@ -1,15 +1,12 @@
-
-
-let winner;
-let computerScore = 0;
-let playerScore = 0;
-
-game();
-
+game(); // calls the oveall controlling function
 
 function game() {
+  // initialize variables outside the loop
+  let winner;
+  let computerScore = 0;
+  let playerScore = 0;
   
-  for (i = 1; i <=5; i++) {
+  for (i = 1; i <=5; i++) { // play 5 rounds
 
     // Make computer and player choices
     let playerSelection = getPlayerInput();
@@ -47,6 +44,8 @@ function game() {
       } else if (playerScore == computerScore) {
       console.log("%cThe match was a tie.", "color: blue; font-weight: bold;")
       }
+      console.log("%cGame Over. %cTo play again, refresh the browser.", 
+          "font-weight: bold;", "font-weight: normal;")
     }
   } // end for for loop
 }
