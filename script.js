@@ -45,7 +45,12 @@ function game() {
     }
 
     // report running score
-    console.log("Round " + i + " score");
+    if (i === 1) { // change grammer for 1 vs multiple rounds
+      console.log("Score after " + i + " round -");
+    } else {
+      console.log("Score after " + i + " rounds -");
+    }    
+
     console.log("Your score: " + playerScore + " Computer score: " + computerScore);
     console.log("---------------------")
     
