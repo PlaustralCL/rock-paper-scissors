@@ -11,16 +11,27 @@ function game() {
   let winner;
   let computerScore = 0;
   let playerScore = 0;
+  let playerSelection; // declared here so it is not confined to the do loop
   
-  for (i = 1; i <=5; i++) { // play 5 rounds
+  gameLoop: for (i = 1; i <=5; i++) { // play 5 rounds
 
     // Get player choice
-    let playerSelection = getPlayerInput();
-    // exit without error if the player hits cancel or escape at the prompt
-    if (validateInput(playerSelection) == "end") {
-      break; 
-    }
+    let goodInput = false;
+    do {    
+      playerSelection = getPlayerInput();
+      if (playerSelection === "end") {
+        goodInput = true;
+        break gameLoop;
+      } else if (playerSelection === "bad") {
+          goodInput = false;
+          alert("That was not a valid input.")
+      } else {
+        
+        goodInput = true;
+      }
     
+    } while (goodInput === false);
+
     // Get computer choice
     let computerSelection = computerPlay();
 
@@ -93,11 +104,15 @@ function getPlayerInput() {
 }
 
 function validateInput(playerSelection) {
-  if (playerSelection === null) {
+  if (playerSelection === null) { // escape or cancel button
     return "end";
+  } else if (playerSelection.toLowerCase() === "rock" || 
+      playerSelection.toLowerCase() === "paper" || 
+      playerSelection.toLowerCase() === "scissors") {
+    return playerSelection.toLowerCase();    
   } else {
-      return playerSelection.toLowerCase();
-  }
+      return "bad";
+    }
 }
 
 function playRound(playerSelection, computerSelection) {
