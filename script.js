@@ -158,11 +158,11 @@ function showWinningRule(playerSelection, computerSelection) {
 }
 
 
-const keys = document.querySelectorAll('.key');
-keys.forEach((key) => {
-  console.log(key.id);
-  key.addEventListener('click', () => {
-    console.log(key.id);
+const buttons = document.querySelectorAll('.btn');
+buttons.forEach((btn) => {
+  
+  btn.addEventListener('click', () => {
+    console.log(btn.id);
   })
 });
 
