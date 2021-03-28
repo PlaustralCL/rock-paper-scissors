@@ -1,32 +1,15 @@
-function game() {
+function game(playerSelection) {
   // initialize variables outside the loop
-  let winner;
-  let computerScore = 0;
-  let playerScore = 0;
-  let playerSelection; // declared here so it is not confined to the do loop
-  
-  gameLoop: for (i = 1; i <=5; i++) { // play 5 rounds
 
-    // Get player choice
-    let goodInput = false;
-    do {    
-      playerSelection = getPlayerInput();
-      if (playerSelection === "end") {
-        goodInput = true;
-        break gameLoop;
-      } else if (playerSelection === "bad") {
-          goodInput = false;
-          alert("That was not a valid input.")
-      } else {
-        
-        goodInput = true;
-      }
+
+  
+
+
     
-    } while (goodInput === false);
 
     // Get computer choice
     let computerSelection = computerPlay();
-
+    let i = 5;
     // Print initial information
     console.log("%cRound #" + i, "font-weight: bold;")
     console.log("You chose " + playerSelection);
@@ -67,7 +50,7 @@ function game() {
       console.log("%cThe match was a tie.", "color: blue; font-weight: bold;")
       }      
     }
-  } // end for for loop
+
 }
 
 function computerPlay() {
@@ -157,13 +140,21 @@ function showWinningRule(playerSelection, computerSelection) {
   }
 }
 
+function test(selection) {
+  console.log('Your selection is: ' + selection);
+}
+
+//Main code
+let winner;
+let computerScore = 0;
+let playerScore = 0;
 
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach((btn) => {
-  
   btn.addEventListener('click', () => {
-    console.log(btn.id);
-  })
+    game(btn.id);
+  });
+  
 });
 
 
