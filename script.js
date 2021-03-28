@@ -1,15 +1,10 @@
-function game(playerSelection) {
-  // initialize variables outside the loop
-
-
-  
-
-
-    
-
-    // Get computer choice
+function game(playerSelection, i) {
+  /* The variable `i` is used for the round number as a carry over from the 
+      console version where there was a loop to track playing 5 rounds. */
+      
+  // Get computer choice
     let computerSelection = computerPlay();
-    let i = 5;
+    
     // Print initial information
     console.log("%cRound #" + i, "font-weight: bold;")
     console.log("You chose " + playerSelection);
@@ -148,13 +143,14 @@ function test(selection) {
 let winner;
 let computerScore = 0;
 let playerScore = 0;
+let round = 0;
 
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach((btn) => {
   btn.addEventListener('click', () => {
-    game(btn.id);
+    round++;
+    game(btn.id, round);
   });
-  
 });
 
 
