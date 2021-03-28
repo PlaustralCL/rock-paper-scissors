@@ -1,11 +1,3 @@
-const wave = String.fromCodePoint(0x1f44b);
-console.log(wave + "Hi there!\nThis is a console version of Rock, Paper, Scissors.\n\
-To play, make your choice in the prompt and the results will be shown in the console.")
-
-game(); // calls the overall controlling function
-console.log("%cGame Over. %cTo play again, refresh the browser.", 
-          "font-weight: bold;", "font-weight: normal;");
-
 function game() {
   // initialize variables outside the loop
   let winner;
@@ -164,3 +156,18 @@ function showWinningRule(playerSelection, computerSelection) {
       return "Scissors cut paper."
   }
 }
+
+
+const keys = document.querySelectorAll('.key');
+keys.forEach((key) => {
+  console.log(key.id);
+  key.addEventListener('click', () => {
+    console.log(key.id);
+  })
+});
+
+
+/* game(); // calls the overall controlling function
+console.log("%cGame Over. %cTo play again, refresh the browser.", 
+          "font-weight: bold;", "font-weight: normal;");
+ */
