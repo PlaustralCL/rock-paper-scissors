@@ -1,49 +1,39 @@
 function game(playerSelection, i) {
   /* The variable `i` is used for the round number as a carry over from the 
       console version where there was a loop to track playing 5 rounds. */
-      
+
   // Get computer choice
     let computerSelection = computerPlay();
-    
-    // Print initial information
-    console.log("%cRound #" + i, "font-weight: bold;")
-    console.log("You chose " + playerSelection);
-    console.log("The computer chose " + computerSelection);
-    console.log(showWinningRule(playerSelection, computerSelection));
-    
+
     // Play the round 
     winner = playRound(playerSelection, computerSelection);
-    
-    //  Show winner and track scores
-    if (winner === "computer") {
-      computerScore += 1;
-      console.log("%cYou loose.", "color: red;");
-    } else if (winner === "player") {
-      playerScore += 1;
-      console.log("%cYou win!", "color: green;");
-    } else if (winner === "tie") {
-      console.log("%cIt's a tie", "color: blue;")
-    }
 
+    
+    // Display information
+    roundNumber.textContent = 'Round #'+ i;
+    choices.textContent = 'You chose ' + playerSelection +
+        '. The computer chose ' + computerSelection +'.';
+    result.textContent = findWinningRule(playerSelection, computerSelection) +
+        ' ' + winningStatement(winner);
+    
+
+ 
     // report running score
     if (i === 1) { // change grammer for 1 vs multiple rounds
-      console.log("Score after " + i + " round -");
+      roundScoreHeader.textContent = 'Score after ' + i + ' round -';
     } else {
-      console.log("Score after " + i + " rounds -");
+      roundScoreHeader.textContent = 'Score after ' + i + ' rounds -';
     }    
-
-    console.log("Your score: " + playerScore + " Computer score: " + computerScore);
-    console.log("---------------------")
+    roundScore.textContent = 'Your score: ' + playerScore + ' Computer score: ' + computerScore;
+   
     
     // report final resutls
-    if (i === 5) {
+    if (playerScore === 5 || computerScore ===5) {
       if (playerScore > computerScore) {
-        console.log("%cYOU WON THE MATCH!!!", "color: green; font-weight: bold;");        
+        totalScore.textContent = 'YOU WON THE MATCH!!!';        
       } else if (playerScore < computerScore) {
-          console.log("%cYou lost the match.", "color: red; font-weight: bold;");          
-      } else if (playerScore == computerScore) {
-      console.log("%cThe match was a tie.", "color: blue; font-weight: bold;")
-      }      
+          totalScore.textContent = 'You lost the match.';          
+      }     
     }
 
 }
@@ -118,7 +108,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function showWinningRule(playerSelection, computerSelection) {
+function findWinningRule(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return "They are the same.";
   } else if ((playerSelection === "rock" || computerSelection === "rock") &&
@@ -135,15 +125,33 @@ function showWinningRule(playerSelection, computerSelection) {
   }
 }
 
-function test(selection) {
-  console.log('Your selection is: ' + selection);
+function winningStatement(winner) {
+  if (winner === "computer") {
+    computerScore += 1;
+    return ' You loose.';
+  } else if (winner === "player") {
+    playerScore += 1;
+    return ' You win!';
+  } else if (winner === "tie") {
+    return ' It\'s a tie';
+  }
 }
+
+
 
 //Main code
 let winner;
 let computerScore = 0;
 let playerScore = 0;
 let round = 0;
+
+const roundNumber = document.querySelector('#roundNumber');
+const choices = document.querySelector('#choices');
+const result = document.querySelector('#result');
+const roundScoreHeader = document.querySelector('#roundScoreHeader');
+const roundScore = document.querySelector('#roundScore');
+const totalScore = document.querySelector('#totalScore');
+
 
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach((btn) => {
