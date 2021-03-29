@@ -30,9 +30,11 @@ function game(playerSelection, i) {
     // report final resutls
     if (playerScore === 5 || computerScore ===5) {
       if (playerScore > computerScore) {
-        totalScore.textContent = 'YOU WON THE MATCH!!!';        
+        totalScore.textContent = 'YOU WON THE MATCH!!!';  
+        gameOver();      
       } else if (playerScore < computerScore) {
-          totalScore.textContent = 'You lost the match.';          
+          totalScore.textContent = 'You lost the match.';  
+          gameOver();        
       }     
     }
 
@@ -137,7 +139,16 @@ function winningStatement(winner) {
   }
 }
 
+function myClick() {
+  round++;
+  game(this.id, round);
+}
 
+function gameOver() {
+  buttons.forEach((btn) => {
+    btn.removeEventListener('click', myClick);
+  });
+};
 
 //Main code
 let winner;
@@ -155,11 +166,15 @@ const totalScore = document.querySelector('#totalScore');
 
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    round++;
-    game(btn.id, round);
-  });
+  btn.addEventListener('click', myClick);
 });
+
+
+//   btn.addEventListener('click', () => {
+//     round++;
+//     game(btn.id, round);
+//   });
+// });
 
 
 /* game(); // calls the overall controlling function
