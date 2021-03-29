@@ -147,8 +147,32 @@ function myClick() {
 function gameOver() {
   buttons.forEach((btn) => {
     btn.removeEventListener('click', myClick);
-  });
+  }) // stops the game after somebody reaches 5 points
+
+  let gameChoice = prompt('New game?', 'yes');
+  if (gameChoice === 'yes') {
+    newGame();
+  }
 };
+
+function newGame() {
+  computerScore = 0;
+  playerScore = 0;
+  round = 0;
+
+  //resets all game generated text
+  roundNumber.textContent = '';
+  choices.textContent = '';
+  result.textContent = '';
+  roundScoreHeader.textContent = '';
+  roundScore.textContent = '';
+  totalScore.textContent = '';
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', myClick);
+  });
+}
+
 
 //Main code
 let winner;
