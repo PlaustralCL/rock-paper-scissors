@@ -26,10 +26,28 @@ body {
   font-size: 16px;
   border-style: solid;
   border-color: black;
-  
 }
+
+.btn--1 {
+  width: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border-style: solid;
+  border-color: black;
+}
+      
 
 .active {
   border-color: red;
   
+}
+
+.replay {
+  display: none;
+}
+
+.replay--active {
+  display: block;
 }

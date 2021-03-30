@@ -139,21 +139,32 @@ function winningStatement(winner) {
   }
 }
 
-function myClick() {
+function myClickRps() { // used as a named function for addEventListener
   round++;
   game(this.id, round);
 }
 
-function gameOver() {
-  buttons.forEach((btn) => {
-    btn.removeEventListener('click', myClick);
-  }) // stops the game after somebody reaches 5 points
-
-  let gameChoice = prompt('New game?', 'yes');
-  if (gameChoice === 'yes') {
+function myClickReplay () {
+  if (this.id === 'yes') {
     newGame();
   }
-};
+}
+
+function gameOver() {
+  buttons.forEach((btn) => {
+    btn.removeEventListener('click', myClickRps);
+  }) // stops the game after somebody reaches 5 points
+
+  
+  replay.classList.add("replay--active");
+
+  
+  const replayButtons = document.querySelectorAll('.btn--1');
+  replayButtons.forEach((btn) => {
+  btn.addEventListener('click', myClickReplay);
+  });
+
+}
 
 function newGame() {
   computerScore = 0;
@@ -167,9 +178,10 @@ function newGame() {
   roundScoreHeader.textContent = '';
   roundScore.textContent = '';
   totalScore.textContent = '';
+  replay.classList.remove("replay--active");
 
   buttons.forEach((btn) => {
-    btn.addEventListener('click', myClick);
+    btn.addEventListener('click', myClickRps);
   });
 }
 
@@ -186,11 +198,12 @@ const result = document.querySelector('#result');
 const roundScoreHeader = document.querySelector('#roundScoreHeader');
 const roundScore = document.querySelector('#roundScore');
 const totalScore = document.querySelector('#totalScore');
+const replay = document.querySelector('.replay');
 
 
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach((btn) => {
-  btn.addEventListener('click', myClick);
+  btn.addEventListener('click', myClickRps);
 });
 
 
