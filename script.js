@@ -155,15 +155,12 @@ function gameOver() {
     btn.removeEventListener('click', myClickRps);
   }) // stops the game after somebody reaches 5 points
 
-  
   replay.classList.add("replay--active");
-
   
   const replayButtons = document.querySelectorAll('.btn--1');
   replayButtons.forEach((btn) => {
   btn.addEventListener('click', myClickReplay);
   });
-
 }
 
 function newGame() {
