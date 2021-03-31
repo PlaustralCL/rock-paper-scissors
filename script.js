@@ -182,10 +182,10 @@ function finalResults() {
 }
 
 function gameOver() {
-  gameStatus = 'over';
+  gameStatus = 'over';  
   buttons.forEach((btn) => {
-    btn.removeEventListener('click', myClickRps);
-  }) // stops the game after somebody reaches 5 points
+    btn.setAttribute("disabled", ""); //easier than removing the click function
+  }) 
 
   replay.classList.add("replay--active");
   
@@ -209,6 +209,10 @@ function newGame() {
   roundScore.textContent = '';
   totalScore.textContent = '';
   replay.classList.remove("replay--active");
+
+  buttons.forEach((btn) => {
+    btn.removeAttribute("disabled", ""); 
+  }) 
 
   buttons.forEach((btn) => {
     btn.addEventListener('click', myClickRps);
