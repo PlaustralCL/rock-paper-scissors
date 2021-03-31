@@ -39,8 +39,11 @@ body {
 }
 
 .active {
-  border-color: red;
-  
+  border-color: red;  
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 .replay {
