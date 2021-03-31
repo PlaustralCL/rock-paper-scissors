@@ -156,8 +156,13 @@ function finalResults() {
       totalScore.textContent = 'You lost the match.';  
       gameOver();        
   } else if (playerScore === computerScore) {
-    totalScore.textContent = 'The match ended in a tie.';  
-    gameOver();  
+      if (round != 0) {
+        totalScore.textContent = 'The match ended in a tie.';  
+        gameOver(); 
+      } else {
+        gameOver();
+      }
+
   }
 }
 
