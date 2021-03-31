@@ -1,5 +1,16 @@
 /* Style sheet for Rock Paper Scissors project */
-body {
+
+/*Design information
+  Colors inspired by Nordtheme.io
+    font color - #2e3440
+    button color - #2e3440
+    button hover - #eceff4
+    button active border - blue
+
+*/
+
+.body {
+  color: #2e3440;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -13,7 +24,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .container--replay {
@@ -27,19 +37,12 @@ body {
   margin-left: 10px;
   margin-right: 10px;
   padding: 10px;
-  font-size: 16px;
   border-style: solid;
   border-color: black;
-}
-
-.btn-1 {
-  width: 100px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 10px;
+  border-radius: 3px;
+  background-color: #d8dee9;
+  color: #2e3440;
   font-size: 16px;
-  border-style: solid;
-  border-color: black;
 }
 
 button:active {
@@ -48,7 +51,9 @@ button:active {
   border-width: 1px;
 }
 
-
+button:hover {
+  background-color: #eceff4;
+}
 
 .underline {
   text-decoration: underline;

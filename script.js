@@ -126,15 +126,12 @@ function keyRPS(event) {
     if (event.key === 'q' || event.key === 'Q') {
       finalResults(); 
     } else if( event.key === 'r' || event.key === 'R') {
-        console.log('rock');
         round++;
         game('rock', round);
     } else if (event.key === 'p' || event.key === 'P') {
-        console.log('paper');
         round++;
         game('paper', round);
     } else if (event.key === 's' || event.key === 'S') {
-        console.log('scissors');
         round++;
         game('scissors', round);
     }
@@ -172,7 +169,7 @@ function gameOver() {
 
   replay.classList.add("replay--active");
   
-  const replayButtons = document.querySelectorAll('.btn-1');
+  const replayButtons = document.querySelectorAll('.btn-replay');
   replayButtons.forEach((btn) => {
   btn.addEventListener('click', myClickReplay);
   });
@@ -218,7 +215,7 @@ const roundScore = document.querySelector('#roundScore');
 const totalScore = document.querySelector('#totalScore');
 const replay = document.querySelector('.replay');
 
-const buttons = document.querySelectorAll('.btn');
+const buttons = document.querySelectorAll('.btn-rps');
 buttons.forEach((btn) => {
   btn.addEventListener('click', myClickRps);
 });
