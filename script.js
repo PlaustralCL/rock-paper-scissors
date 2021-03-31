@@ -144,6 +144,34 @@ function myClickRps() { // used as a named function for addEventListener
   game(this.id, round);
 }
 
+function keyRPS(event) {
+  if (gameStatus === 'active') {
+    if (event.key === 'q' || event.key === 'Q') {
+      console.log('Game over');
+      gameOver();   
+    } else if( event.key === 'r' || event.key === 'R') {
+        console.log('rock');
+        round++;
+        game('rock', round);
+    } else if (event.key === 'p' || event.key === 'P') {
+        console.log('paper');
+        round++;
+        game('paper', round);
+    } else if (event.key === 's' || event.key === 'S') {
+        console.log('scissors');
+        round++;
+        game('scissors', round);
+    }
+  } else if (gameStatus === 'over') {
+      if (event.key === 'y' || event.key === 'Y') {
+        newGame();
+      }
+  }
+  
+
+ 
+}
+
 function myClickReplay () {
   if (this.id === 'yes') {
     newGame();
@@ -151,6 +179,7 @@ function myClickReplay () {
 }
 
 function gameOver() {
+  gameStatus = 'over';
   buttons.forEach((btn) => {
     btn.removeEventListener('click', myClickRps);
   }) // stops the game after somebody reaches 5 points
@@ -167,6 +196,7 @@ function newGame() {
   computerScore = 0;
   playerScore = 0;
   round = 0;
+  gameStatus = 'active';
 
   //resets all game generated text
   roundNumber.textContent = '';
@@ -184,10 +214,12 @@ function newGame() {
 
 
 //Main code
+//Global Variables
 let winner;
 let computerScore = 0;
 let playerScore = 0;
 let round = 0;
+let gameStatus = 'active';
 
 const roundNumber = document.querySelector('#roundNumber');
 const choices = document.querySelector('#choices');
@@ -202,6 +234,8 @@ const buttons = document.querySelectorAll('.btn');
 buttons.forEach((btn) => {
   btn.addEventListener('click', myClickRps);
 });
+
+document.addEventListener('keydown', keyRPS);
 
 
 //   btn.addEventListener('click', () => {
