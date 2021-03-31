@@ -7,15 +7,19 @@ body {
   margin-top: 20px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  border-style: solid;
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 20vh;
-  border-style: solid;
+  
+}
+
+.container--replay {
+  display: flex;
+  justify-content: center;
+  align-items: center  
 }
 
 .btn {
@@ -41,14 +45,9 @@ body {
 button:active {
   border-style: solid;
   border-color: blue;
-  border-width: 3px;
+  border-width: 1px;
 }
 
-button:focus {
-  border-style: solid;
-  border-color: blue;
-  border-width: 3px;
-}
 
 
 .underline {

@@ -54,23 +54,6 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min); 
 }
 
-function getPlayerInput() {
-  let playerSelection = prompt("Choose 'Rock', 'Paper' or 'Scissors'");
-  return validateInput(playerSelection);
-}
-
-function validateInput(playerSelection) {
-  if (playerSelection === null) { // escape or cancel button
-    return "end";
-  } else if (playerSelection.toLowerCase() === "rock" || 
-      playerSelection.toLowerCase() === "paper" || 
-      playerSelection.toLowerCase() === "scissors") {
-    return playerSelection.toLowerCase();    
-  } else {
-      return "bad";
-    }
-}
-
 function playRound(playerSelection, computerSelection) {
   // determines the winner of the round and returns the name of the winner
   if (playerSelection === computerSelection) {
@@ -219,7 +202,6 @@ function newGame() {
   });
 }
 
-
 //Main code
 //Global Variables
 let winner;
@@ -236,23 +218,9 @@ const roundScore = document.querySelector('#roundScore');
 const totalScore = document.querySelector('#totalScore');
 const replay = document.querySelector('.replay');
 
-
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach((btn) => {
   btn.addEventListener('click', myClickRps);
 });
 
 document.addEventListener('keydown', keyRPS);
-
-
-//   btn.addEventListener('click', () => {
-//     round++;
-//     game(btn.id, round);
-//   });
-// });
-
-
-/* game(); // calls the overall controlling function
-console.log("%cGame Over. %cTo play again, refresh the browser.", 
-          "font-weight: bold;", "font-weight: normal;");
- */
