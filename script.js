@@ -189,7 +189,7 @@ function gameOver() {
 
   replay.classList.add("replay--active");
   
-  const replayButtons = document.querySelectorAll('.btn--1');
+  const replayButtons = document.querySelectorAll('.btn-1');
   replayButtons.forEach((btn) => {
   btn.addEventListener('click', myClickReplay);
   });

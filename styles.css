@@ -28,7 +28,7 @@ body {
   border-color: black;
 }
 
-.btn--1 {
+.btn-1 {
   width: 100px;
   margin-left: 10px;
   margin-right: 10px;
@@ -38,9 +38,18 @@ body {
   border-color: black;
 }
 
-.active {
-  border-color: red;  
+button:active {
+  border-style: solid;
+  border-color: blue;
+  border-width: 3px;
 }
+
+button:focus {
+  border-style: solid;
+  border-color: blue;
+  border-width: 3px;
+}
+
 
 .underline {
   text-decoration: underline;
