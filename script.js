@@ -1,7 +1,7 @@
 function game(playerSelection, i) {
   /* The variable `i` is used for the round number as a carry over from the 
       console version where there was a loop to track playing 5 rounds. */
-
+  
   // Get computer choice
     let computerSelection = computerPlay();
 
@@ -29,13 +29,7 @@ function game(playerSelection, i) {
     
     // report final resutls
     if (playerScore === 5 || computerScore ===5) {
-      if (playerScore > computerScore) {
-        totalScore.textContent = 'YOU WON THE MATCH!!!';  
-        gameOver();      
-      } else if (playerScore < computerScore) {
-          totalScore.textContent = 'You lost the match.';  
-          gameOver();        
-      }     
+      finalResults(); 
     }
 
 }
@@ -147,8 +141,7 @@ function myClickRps() { // used as a named function for addEventListener
 function keyRPS(event) {
   if (gameStatus === 'active') {
     if (event.key === 'q' || event.key === 'Q') {
-      console.log('Game over');
-      gameOver();   
+      finalResults(); 
     } else if( event.key === 'r' || event.key === 'R') {
         console.log('rock');
         round++;
@@ -167,14 +160,24 @@ function keyRPS(event) {
         newGame();
       }
   }
-  
-
- 
 }
 
 function myClickReplay () {
   if (this.id === 'yes') {
     newGame();
+  }
+}
+
+function finalResults() {
+  if (playerScore > computerScore) {
+    totalScore.textContent = 'YOU WON THE MATCH!!!';  
+    gameOver();      
+  } else if (playerScore < computerScore) {
+      totalScore.textContent = 'You lost the match.';  
+      gameOver();        
+  } else if (playerScore === computerScore) {
+    totalScore.textContent = 'The match ended in a tie.';  
+    gameOver();  
   }
 }
 
