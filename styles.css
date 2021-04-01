@@ -42,7 +42,13 @@
 
 .center {
   margin: auto;
-  width: 50%;
+  width: 375px;
+}
+
+@media (max-width: 500px) {
+  .center {
+    width: 85%;
+  }
 }
 
 .btn {
@@ -56,6 +62,10 @@
   background-color: #d8dee9;
   color: #2e3440;
   font-size: 16px;
+}
+
+.btn-replay {
+  margin-bottom: 15px;
 }
 
 button:active {
@@ -78,8 +88,7 @@ button:hover {
 
 .replay--active {
   display: block;
-  margin: auto;
-  width: 50%;
+  text-align: center;
   font-size: 20px;
   font-weight: bold;
 }
