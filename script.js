@@ -13,7 +13,7 @@ function game(playerSelection, i) {
     roundNumber.textContent = 'Round #'+ i;
     choices.textContent = 'You chose ' + playerSelection +
         '. The computer chose ' + computerSelection +'.';
-    result.textContent = findWinningRule(playerSelection, computerSelection) +
+    result.innerHTML = findWinningRule(playerSelection, computerSelection) +
         ' ' + winningStatement(winner);
     
 
@@ -22,10 +22,9 @@ function game(playerSelection, i) {
     if (i === 1) { // change grammer for 1 vs multiple rounds
       roundScoreHeader.textContent = 'Score after ' + i + ' round -';
     } else {
-      roundScoreHeader.textContent = 'Score after ' + i + ' rounds -';
+        roundScoreHeader.textContent = 'Score after ' + i + ' rounds -';
     }    
     roundScore.textContent = 'Your score: ' + playerScore + ' Computer score: ' + computerScore;
-   
     
     // report final resutls
     if (playerScore === 5 || computerScore ===5) {
@@ -107,18 +106,24 @@ function findWinningRule(playerSelection, computerSelection) {
 function winningStatement(winner) {
   if (winner === "computer") {
     computerScore += 1;
-    return ' You loose.';
+    return ' <span style="color: red"> You loose.</style>';
   } else if (winner === "player") {
     playerScore += 1;
-    return ' You win!';
+    return ' <span style="color: green"> You win!</span>';
   } else if (winner === "tie") {
-    return ' It\'s a tie';
+    return ' <span style="color: blue">It\'s a tie.</span>';
   }
 }
 
 function myClickRps() { // used as a named function for addEventListener
   round++;
   game(this.id, round);
+}
+
+function myClickReplay () {
+  if (this.id === 'yes') {
+    newGame();
+  }
 }
 
 function keyRPS(event) {
@@ -142,21 +147,21 @@ function keyRPS(event) {
   }
 }
 
-function myClickReplay () {
-  if (this.id === 'yes') {
-    newGame();
-  }
-}
-
 function finalResults() {
   if (playerScore > computerScore) {
+    totalScore.style.color = 'green';
+    totalScore.style.fontWeight = 'bold';
     totalScore.textContent = 'YOU WON THE MATCH!!!';  
     gameOver();      
   } else if (playerScore < computerScore) {
-      totalScore.textContent = 'You lost the match.';  
+    totalScore.style.color = 'red';
+    totalScore.style.fontWeight = 'bold';  
+    totalScore.textContent = 'You lost the match.';  
       gameOver();        
   } else if (playerScore === computerScore) {
       if (round != 0) {
+        totalScore.style.color = 'blue';
+        totalScore.style.fontWeight = 'bold';
         totalScore.textContent = 'The match ended in a tie.';  
         gameOver(); 
       } else {

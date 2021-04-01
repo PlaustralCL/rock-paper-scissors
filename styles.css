@@ -24,12 +24,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 50px;
+}
+
+.container--col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .container--replay {
   display: flex;
   justify-content: center;
   align-items: center  
+}
+
+.center {
+  margin: auto;
+  width: 50%;
 }
 
 .btn {
@@ -65,4 +78,8 @@ button:hover {
 
 .replay--active {
   display: block;
+  margin: auto;
+  width: 50%;
+  font-size: 20px;
+  font-weight: bold;
 }
