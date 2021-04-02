@@ -139,7 +139,7 @@ function updateTableScoreP(result) {
   let textNode = document.createTextNode(result);
   td.appendChild(textNode);
   td.classList.add("tableCol");
-  document.getElementById('tablePlayer').appendChild(td);
+  document.getElementById('tablePlayer').insertBefore(td, document.getElementById('tablePlayTotal'));
   return;
 }
 
@@ -153,7 +153,8 @@ function updateTableScoreC(result) {
   let textNode = document.createTextNode(result);
   td.appendChild(textNode);
   td.classList.add("tableCol");
-  document.getElementById('tableComputer').appendChild(td);
+  document.getElementById('tableComputer').insertBefore(td, document.getElementById('tableCompTotal'));
+  // document.getElementById('tableComputer').appendChild(td);
   return;
 }
 

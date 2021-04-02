@@ -122,8 +122,10 @@ button:hover {
 }
 
 .tableTotal {
+  width: 20px;
   background-color: #d8dee9;
   font-weight: bold;
+  text-align: center;
 }
 
 .border {
