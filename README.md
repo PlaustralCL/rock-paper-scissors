@@ -6,7 +6,7 @@ This project plays a basic game of Rock Paper Scissors. Phase 1 of the project w
 ## Phase 1
 Created a console version of rock, paper, scissors. I had fun playing with 
 the formatting of the console.log() output.  A simple windows prompt was used
-to collect the input from the player. [Console version](console/index.html).
+to collect the input from the player. The console version can be seen in the console folder.
 
 I may have gone a little overboard with the use of functions.
 
