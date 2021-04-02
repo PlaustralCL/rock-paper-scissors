@@ -1,14 +1,18 @@
 function game(playerSelection, i) {
   /* The variable `i` is used for the round number as a carry over from the 
       console version where there was a loop to track playing 5 rounds. */
-  
+      let winner;
+      const roundNumber = document.querySelector('#roundNumber');
+      const choices = document.querySelector('#choices');
+      const result = document.querySelector('#result');
+      const roundScoreHeader = document.querySelector('#roundScoreHeader');
+      const roundScore = document.querySelector('#roundScore');
+
   // Get computer choice
     let computerSelection = computerPlay();
 
     // Play the round 
     winner = playRound(playerSelection, computerSelection);
-    
-
     
     // Display information
     roundNumber.style.fontWeight = 'bold';
@@ -36,7 +40,6 @@ function game(playerSelection, i) {
     if (playerScore === 5 || computerScore ===5) {
       finalResults(); 
     }
-
 }
 
 function computerPlay() {
@@ -82,14 +85,14 @@ function findWinningRule(playerSelection, computerSelection) {
   }
 }
 
-function winningStatement(winner) {
-  if (winner === "computer") {
+function winningStatement(winningPlayer) {
+  if (winningPlayer === "computer") {
     computerScore += 1;
     return ' <span style="color: red"> You loose.</style>';
-  } else if (winner === "player") {
+  } else if (winningPlayer === "player") {
     playerScore += 1;
     return ' <span style="color: green"> You win!</span>';
-  } else if (winner === "tie") {
+  } else if (winningPlayer === "tie") {
     return ' <span style="color: blue">It\'s a tie.</span>';
   }
 }
@@ -131,8 +134,6 @@ function updateTableScoreC(result) {
   return;
 }
 
-
-
 function myClickRps() { // used as a named function for addEventListener
   round++;
   game(this.id, round);
@@ -166,6 +167,7 @@ function keyRPS(event) {
 }
 
 function finalResults() {
+  const totalScore = document.querySelector('#totalScore');
   if (playerScore > computerScore) {
     totalScore.style.color = 'green';
     totalScore.style.fontWeight = 'bold';
@@ -185,7 +187,6 @@ function finalResults() {
       } else {
         gameOver();
       }
-
   }
 }
 
@@ -214,12 +215,12 @@ function newGame() {
   gameStatus = 'active';
 
   //resets all game generated text
-  roundNumber.textContent = '';
-  choices.textContent = '';
-  result.textContent = '';
-  roundScoreHeader.textContent = '';
-  roundScore.textContent = '';
-  totalScore.textContent = '';
+  document.querySelector('#roundNumber').textContent = '';
+  document.querySelector('#choices').textContent = '';
+  document.querySelector('#result').textContent = '';
+  document.querySelector('#roundScoreHeader').textContent = '';
+  document.querySelector('#roundScore').textContent = '';
+  document.querySelector('#totalScore').textContent = '';
   replay.classList.remove("replay--active");
 
   /* Loop through all of the tableCol class (the class that was added to 
@@ -245,23 +246,17 @@ function newGame() {
 
 //Main code
 //Global Variables
-let winner;
 let computerScore = 0;
 let playerScore = 0;
 let round = 0;
 let gameStatus = 'active';
-
-const roundNumber = document.querySelector('#roundNumber');
-const choices = document.querySelector('#choices');
-const result = document.querySelector('#result');
-const roundScoreHeader = document.querySelector('#roundScoreHeader');
-const roundScore = document.querySelector('#roundScore');
-const totalScore = document.querySelector('#totalScore');
 const replay = document.querySelector('.replay');
 
+//Click listener
 const buttons = document.querySelectorAll('.btn-rps');
 buttons.forEach((btn) => {
   btn.addEventListener('click', myClickRps);
 });
 
+//Key listner
 document.addEventListener('keydown', keyRPS);
