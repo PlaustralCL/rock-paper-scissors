@@ -3,7 +3,7 @@
 /*Design information
   Colors inspired by Nordtheme.io
     font color - #2e3440
-    button color - #2e3440
+    button color - #d8dee9
     button hover - #eceff4
     button active border - blue
 
@@ -117,10 +117,13 @@ button:hover {
   text-align: center;
 }
 
-.tableTotal {
-  color: #517199;
-  font-weight: bold;
+.tableRow {
+  height: 20px;
+}
 
+.tableTotal {
+  background-color: #d8dee9;
+  font-weight: bold;
 }
 
 .border {
