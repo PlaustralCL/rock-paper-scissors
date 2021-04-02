@@ -106,6 +106,8 @@ function updateTableRound() {
   return;
 }
 
+/* Used two functions to update the table scores rather than finding the logic
+to determine which score to place in which row. */
 function updateTableScoreP(result) {
   if (result === 'player') {
     result = '1';
