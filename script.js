@@ -11,6 +11,7 @@ function game(playerSelection, i) {
 
     
     // Display information
+    roundNumber.style.fontWeight = 'bold';
     roundNumber.textContent = 'Round #'+ i;
     choices.textContent = 'You chose ' + playerSelection +
         '. The computer chose ' + computerSelection +'.';
