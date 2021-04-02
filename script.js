@@ -154,7 +154,6 @@ function updateTableScoreC(result) {
   td.appendChild(textNode);
   td.classList.add("tableCol");
   document.getElementById('tableComputer').insertBefore(td, document.getElementById('tableCompTotal'));
-  // document.getElementById('tableComputer').appendChild(td);
   return;
 }
 
@@ -250,6 +249,8 @@ function newGame() {
     https://stackoverflow.com/questions/10842471/how-to-remove-all-elements-of-a-certain-class-from-the-dom
     second answer, by leonheess */
   document.querySelectorAll('.tableCol').forEach(e => e.remove());
+  document.getElementById('tablePlayTotal').textContent = '0';
+  document.getElementById('tableCompTotal').textContent = '0';
 
   buttons.forEach((btn) => {
     btn.removeAttribute("disabled", ""); 
