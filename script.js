@@ -40,17 +40,8 @@ function game(playerSelection, i) {
 }
 
 function computerPlay() {
-  let computerSelection = getRandomIntInclusive(1, 3);
-  switch (computerSelection) {
-    case 1:
-      computerSelection = "rock";
-      break;
-    case 2:
-      computerSelection = "paper";
-      break;
-    case 3:
-      computerSelection = "scissors";
-  }
+  const computerChoices = ['rock', 'paper', 'scissors'];
+  let computerSelection = computerChoices[getRandomIntInclusive(0, 2)];
   return computerSelection;
 }
 
@@ -59,36 +50,18 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min); 
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSel, computerSel) {
   // determines the winner of the round and returns the name of the winner
-  if (playerSelection === computerSelection) {
+  if (playerSel === computerSel) {
     return "tie";
-  } else if (playerSelection === "rock") {
-      switch (computerSelection) {
-        case "paper":
-          return "computer";
-          break;
-        case "scissors":
-          return "player";
-      }
-
-    } else if (playerSelection === "paper") {
-      switch (computerSelection) {
-        case "rock":
-          return "player";
-          break;
-        case "scissors":
-          return "computer"
-      }
-
-    } else if (playerSelection === "scissors") {
-      switch (computerSelection) {
-        case "rock":
-          return "computer";
-          break;
-        case "paper":
-          return "player"
-      }
+  } else if ((playerSel === 'rock' && computerSel === 'scissors') ||
+        (playerSel === 'paper' && computerSel === 'rock') ||
+        (playerSel === 'scissors' && computerSel ==='paper')) {
+      // These are all the possible winning combinations for the player
+          return 'player';
+    } else {
+      // If it's not a tie or the player winning, the computer wins
+      return 'computer';
     }
 }
 
@@ -222,6 +195,10 @@ function gameOver() {
     btn.setAttribute("disabled", ""); //easier than removing the click function
   }) 
 
+  buttons.forEach((btn) => {
+    btn.classList.add('btn--disabled');
+  })
+
   replay.classList.add("replay--active");
   
   const replayButtons = document.querySelectorAll('.btn-replay');
@@ -256,6 +233,10 @@ function newGame() {
   buttons.forEach((btn) => {
     btn.removeAttribute("disabled", ""); 
   }) 
+
+  buttons.forEach((btn) => {
+    btn.classList.remove('btn--disabled');
+  })
 
   buttons.forEach((btn) => {
     btn.addEventListener('click', myClickRps);

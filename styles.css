@@ -78,10 +78,15 @@
   margin-right: 10px;
 }
 
+.btn--disabled {
+  background-color: #eceff4;
+  color: #4C566A;
+}
+
 button:active {
   border-style: solid;
   border-color: blue;
-  border-width: 1px;
+  border-width: 2px;
 }
 
 button:hover {
