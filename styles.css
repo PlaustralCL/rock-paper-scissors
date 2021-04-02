@@ -27,19 +27,6 @@
   margin-bottom: 20px;
 }
 
-.container--col {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.container--replay {
-  display: flex;
-  justify-content: center;
-  align-items: center  
-}
-
 .break {
   width: 100vw;
 }
@@ -107,7 +94,7 @@ button:hover {
   font-weight: bold;
 }
 
-.far {
+.far { /*used for the icons */
   font-size: 24px;
 }
 
