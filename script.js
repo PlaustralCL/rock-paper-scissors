@@ -7,6 +7,7 @@ function game(playerSelection, i) {
 
     // Play the round 
     winner = playRound(playerSelection, computerSelection);
+    
 
     
     // Display information
@@ -16,7 +17,11 @@ function game(playerSelection, i) {
     result.innerHTML = findWinningRule(playerSelection, computerSelection) +
         ' ' + winningStatement(winner);
     
-
+    document.getElementById('tablePlayTotal').textContent = playerScore;
+    document.getElementById('tableCompTotal').textContent = computerScore;
+    updateTableRound();
+    updateTableScoreP(winner);
+    updateTableScoreC(winner);
  
     // report running score
     if (i === 1) { // change grammer for 1 vs multiple rounds
@@ -114,6 +119,45 @@ function winningStatement(winner) {
     return ' <span style="color: blue">It\'s a tie.</span>';
   }
 }
+
+function updateTableRound() {
+  const th = document.createElement('th');
+  let textNode = document.createTextNode(round);
+  th.appendChild(textNode);
+  th.classList.add("tableCol");
+  document.getElementById('tableRound').appendChild(th);
+  return;
+}
+
+function updateTableScoreP(result) {
+  if (result === 'player') {
+    result = '1';
+  } else {
+    result = '0';
+  }
+  const td = document.createElement('td');
+  let textNode = document.createTextNode(result);
+  td.appendChild(textNode);
+  td.classList.add("tableCol");
+  document.getElementById('tablePlayer').appendChild(td);
+  return;
+}
+
+function updateTableScoreC(result) {
+  if (result === 'computer') {
+    result = '1';
+  } else {
+    result = '0';
+  }
+  const td = document.createElement('td');
+  let textNode = document.createTextNode(result);
+  td.appendChild(textNode);
+  td.classList.add("tableCol");
+  document.getElementById('tableComputer').appendChild(td);
+  return;
+}
+
+
 
 function myClickRps() { // used as a named function for addEventListener
   round++;

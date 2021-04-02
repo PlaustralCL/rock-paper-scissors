@@ -102,6 +102,28 @@ button:hover {
   font-size: 20px;
   font-weight: bold;
 }
+
 .far {
   font-size: 24px;
 }
+
+.table {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.tableCol {
+  width: 20px;
+  text-align: center;
+}
+
+.tableTotal {
+  color: #517199;
+  font-weight: bold;
+
+}
+
+.border {
+  border-style: solid;
+}
+
