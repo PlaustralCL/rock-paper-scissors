@@ -245,6 +245,12 @@ function newGame() {
   totalScore.textContent = '';
   replay.classList.remove("replay--active");
 
+  /* Loop through all of the tableCol class (the class that was added to 
+    each score in the table) and then removes it. THis is based on 
+    https://stackoverflow.com/questions/10842471/how-to-remove-all-elements-of-a-certain-class-from-the-dom
+    second answer, by leonheess */
+  document.querySelectorAll('.tableCol').forEach(e => e.remove());
+
   buttons.forEach((btn) => {
     btn.removeAttribute("disabled", ""); 
   }) 
