@@ -229,7 +229,7 @@ function newGame() {
     each score in the table) and then removes it. THis is based on 
     https://stackoverflow.com/questions/10842471/how-to-remove-all-elements-of-a-certain-class-from-the-dom
     second answer, by leonheess */
-  document.querySelectorAll('.tableCol').forEach(e => e.remove());
+  document.querySelectorAll('.tableCol').forEach(e => e.remove()); //removes the generated table data (td) elements
   document.getElementById('tablePlayTotal').textContent = '0';
   document.getElementById('tableCompTotal').textContent = '0';
 
@@ -260,5 +260,5 @@ buttons.forEach((btn) => {
   btn.addEventListener('click', myClickRps);
 });
 
-//Key listner
+//Keyboard listner
 document.addEventListener('keydown', keyRPS);
